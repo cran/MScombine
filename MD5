@@ -1,0 +1,16 @@
+d7fa50fd26b3187a5acba6893837ca5a *DESCRIPTION
+7fb359c6255690bac4751ccb9a305bdb *NAMESPACE
+57495bd7a53fc38852760cd91e9c352e *R/CombinePolarities.R
+89eeb138d19eff1402a5ae4d2170b33c *R/FilterbyRT.R
+bc15585fd14c0a2e0abf056161061c4e *R/FindCommon.R
+d41d8cd98f00b204e9800998ecf8427e *R/MScombine.R
+6356ea4a1cdd7cf14624106cc913fb61 *R/RemoveMismatch.R
+e8c3feab393d32a18d1d93f6ec6ad4d1 *R/StudyRTdiff.R
+3d9f1e0d5e2de6c823f16f46f40a7739 *inst/extdata/adducts.csv
+dba97215f3ba290e56ddb4e42a12636c *inst/extdata/negative.csv
+102f8e435b27619e446e666ae92130f3 *inst/extdata/positive.csv
+574094bc1a1fca1bd1ceb9ae13dcbaa4 *man/CombinePolarities.Rd
+f68673116a3ee7fdfcb570d0ba82fc9c *man/FilterbyRT.Rd
+81cdb21f57b84db0111a4d7cabc84640 *man/FindCommon.Rd
+caa9296aea10d15dbcc5d93f6fca0c0f *man/RemoveMismatch.Rd
+5831465614f2e66f46538399a93e5d01 *man/StudyRTdiff.Rd
