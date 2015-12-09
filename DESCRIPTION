@@ -2,8 +2,8 @@ Package: MScombine
 Type: Package
 Title: Combine Data from Positive and Negative Ionization Mode Finding
         Common Entities
-Version: 1.0
-Date: 2015-11-18
+Version: 1.1
+Date: 2015-12-09
 Author: Monica Calderon-Santiago
 Maintainer: Monica Calderon-Santiago <b42casam@uco.es>
 Description: Find common entities detected in both positive and negative
@@ -15,6 +15,6 @@ Suggests: testthat
 LazyData: true
 RoxygenNote: 5.0.1
 NeedsCompilation: no
-Packaged: 2015-11-20 10:53:23 UTC; FQM227
+Packaged: 2015-12-09 10:51:20 UTC; FQM227
 Repository: CRAN
-Date/Publication: 2015-11-20 12:10:58
+Date/Publication: 2015-12-09 12:57:24

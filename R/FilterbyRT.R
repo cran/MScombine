@@ -12,8 +12,8 @@
 #' @return Plot filtered (RT+ vs RT-, regression, "residuals vs predicted", and Q-Q plot)
 #' @return New CommonEntities table filtered, obtained after removing entities with very high or low residuals or RT+ vs RT-.
 FilterbyRT<-function(CommonEntitiesImproved,MaxResidual,MinResidual) {
-  CommonEntitiesFiltered<-CommonEntitiesImproved[(CommonEntitiesImproved$Residuals)<MaxResidual,]
-  CommonEntitiesFiltered<-CommonEntitiesImproved[(CommonEntitiesImproved$Residuals)>MinResidual,]
+  CommonEntitiesPreFiltered<-CommonEntitiesImproved[(CommonEntitiesImproved$Residuals)<MaxResidual,]
+  CommonEntitiesFiltered<-CommonEntitiesPreFiltered[(CommonEntitiesPreFiltered$Residuals)>MinResidual,]
   pdf("RTpositive_vs_RTnegative_Filtered.pdf")
   plot(CommonEntitiesFiltered[,'x'],CommonEntitiesFiltered[,'y'],main="RT+ vs RT-")
   dev.off()
