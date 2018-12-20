@@ -13,6 +13,9 @@
 #' @export 
 FindCommon<-function(POSITIVE,NEGATIVE,ADDUCTS,Masstolerance,RTtolerance) {ctr1 = 2;
                                                                            mh = c("CpdID+","CpdID-","Adduct+","Adduct-","Mass+","Mass-","RT+","RT-","Mean+","Mean-","N+","N-","Correlation");
+                                                                           mh=rbind(mh,c(0));
+                                                                           colnames(mh)<-mh[1,]
+                                                                           mh<-mh[0,]
                                                                            x = dim(POSITIVE);
                                                                            npos = x[1];
                                                                            POSITIVE_subset<-POSITIVE[,-1];
@@ -45,21 +48,8 @@ FindCommon<-function(POSITIVE,NEGATIVE,ADDUCTS,Masstolerance,RTtolerance) {ctr1 
                                                                                    if(abs(diffmass2)<cont){
                                                                                      NEGj=as.vector(NEG[j,]);
                                                                                      POSi=as.vector(POS[i,]);
-                                                                                     mh=rbind(mh,c(0));
-                                                                                     mh[ctr1,1] = POSITIVE[i,1];
-                                                                                     mh[ctr1,2] = NEGATIVE[j,1];
-                                                                                     mh[ctr1,3] = ADDUCTS[a,1]; 
-                                                                                     mh[ctr1,4] = ADDUCTS[a,2];
-                                                                                     mh[ctr1,5] = POSITIVE[i,2]; 
-                                                                                     mh[ctr1,6] = NEGATIVE[j,2]; 
-                                                                                     mh[ctr1,7] = POSITIVE[i,3]; 
-                                                                                     mh[ctr1,8] = NEGATIVE[j,3];
-                                                                                     mh[ctr1,9] = round(apply(POSITIVE_subset2[i,c(1:mpos)],1,mean,dim=1,na.rm=TRUE),digits=6)
-                                                                                     mh[ctr1,10] = round(apply(NEGATIVE_subset2[j,c(1:mneg)],1,mean,dim=1,na.rm=TRUE),digits=6)
-                                                                                     mh[ctr1,11] = sum(!is.na(POSi))
-                                                                                     mh[ctr1,12] = sum(!is.na(NEGj))
-                                                                                     mh[ctr1,13] = cor(POSi, NEGj,use="na.or.complete")
-                                                                                     ctr1=ctr1+1;
+                                                                                     newrow<-list(POSITIVE[i,1],NEGATIVE[j,1],ADDUCTS[a,1],ADDUCTS[a,2],POSITIVE[i,2],NEGATIVE[j,2],POSITIVE[i,3],NEGATIVE[j,3],round(apply(POSITIVE_subset2[i,c(1:mpos)],1,mean,dim=1,na.rm=TRUE),digits=6),round(apply(NEGATIVE_subset2[j,c(1:mneg)],1,mean,dim=1,na.rm=TRUE),digits=6),sum(!is.na(POSi)),sum(!is.na(NEGj)),cor(POSi, NEGj,use="na.or.complete"));
+                                                                                     mh=rbind(mh,unlist(newrow));
                                                                                      j=j+1;
                                                                                    }else j=j+1;
                                                                                    
@@ -70,7 +60,7 @@ FindCommon<-function(POSITIVE,NEGATIVE,ADDUCTS,Masstolerance,RTtolerance) {ctr1 
                                                                              a=a+1;
                                                                            }
                                                                            
-                                                                           write.table(mh,file="CommonEntities.csv",sep=",",row.names=FALSE,col.names=FALSE);
+                                                                           write.table(mh,file="CommonEntities.csv",sep=",",row.names=FALSE);
                                                                            CommonEntities<-read.table("CommonEntities.csv",sep=",",header=TRUE,as.is=c(1,2))
                                                                            colnames(CommonEntities) <- c("CpdID+","CpdID-","Adduct+","Adduct-","Mass+","Mass-","RT+","RT-","Mean+","Mean-","N+","N-","Correlation")
                                                                            CommonEntities}

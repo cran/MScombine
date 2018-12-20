@@ -68,7 +68,7 @@ RemoveMismatch<-function(CommonEntities) {colnames(CommonEntities)[colnames(Comm
                                           
                                           nNEG<-ddply(CommonEntities,.(CpdID..1, Adduct..1),summarise,nNeg=sum(!is.na(CpdID..1))); #Lista de Compuestos y aductos con su n, es decir, si un compuesto sigue saliendo repetido es porque tiene varios tipos de aductos, esos son los casos que hay que estudiar
                                           nNEGmustbedeletedX<-ddply(nNEG,"CpdID..1",summarise,nNeg=sum(!is.na(CpdID..1)));
-                                          nNEGmustbedeleted<-nNEGmustbedeletedX[nNEGmustbedeletedX$nNeg>1]; #Saca la lista de los compuestos que ademas de estar repetidos tienen distintos tipos de aductos
+                                          nNEGmustbedeleted<-nNEGmustbedeletedX[nNEGmustbedeletedX$nNeg>1,]; #Saca la lista de los compuestos que ademas de estar repetidos tienen distintos tipos de aductos
                                           if(dim(nNEGmustbedeleted)[2]!=0){
                                           Cpdtodel1neg<-nNEGmustbedeleted[,"CpdID..1"];
                                           Cpdtodel2neg<-nNEG[nNEG$CpdID..1 %in% Cpdtodel1neg[],];
@@ -76,7 +76,7 @@ RemoveMismatch<-function(CommonEntities) {colnames(CommonEntities)[colnames(Comm
                                           lengthCpdtodel1neg<-length(Cpdtodel1neg); #Contiene el numero de compuestos que estaban repetidos y cuyos aductos se encuentran en Cpdtodel2
                                           ff=1;
                                           while(ff<(lengthCpdtodel1neg+1)){
-                                            Cpdtodel3neg <- Cpdtodel2neg[Cpdtodel2neg$CpdID..1==Cpdtodel1neg[ff]];
+                                            Cpdtodel3neg <- Cpdtodel2neg[Cpdtodel2neg$CpdID..1==Cpdtodel1neg[ff],];
                                             if(any(Cpdtodel3neg[,"nNeg"]!=max(Cpdtodel3neg$nNeg)))
                                             {Cpdtodel3neg [Cpdtodel3neg==max(Cpdtodel3neg$nNeg)] <- NA;
                                              Cpdtodel3neg <- na.omit(Cpdtodel3neg);
