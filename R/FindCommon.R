@@ -48,7 +48,7 @@ FindCommon<-function(POSITIVE,NEGATIVE,ADDUCTS,Masstolerance,RTtolerance) {ctr1 
                                                                                    if(abs(diffmass2)<cont){
                                                                                      NEGj=as.vector(NEG[j,]);
                                                                                      POSi=as.vector(POS[i,]);
-                                                                                     newrow<-list(POSITIVE[i,1],NEGATIVE[j,1],ADDUCTS[a,1],ADDUCTS[a,2],POSITIVE[i,2],NEGATIVE[j,2],POSITIVE[i,3],NEGATIVE[j,3],round(apply(POSITIVE_subset2[i,c(1:mpos)],1,mean,dim=1,na.rm=TRUE),digits=6),round(apply(NEGATIVE_subset2[j,c(1:mneg)],1,mean,dim=1,na.rm=TRUE),digits=6),sum(!is.na(POSi)),sum(!is.na(NEGj)),cor(POSi, NEGj,use="na.or.complete"));
+                                                                                     newrow<-list(as.character(POSITIVE[i,1]),as.character(NEGATIVE[j,1]),ADDUCTS[a,1],ADDUCTS[a,2],POSITIVE[i,2],NEGATIVE[j,2],POSITIVE[i,3],NEGATIVE[j,3],round(apply(POSITIVE_subset2[i,c(1:mpos)],1,mean,dim=1,na.rm=TRUE),digits=6),round(apply(NEGATIVE_subset2[j,c(1:mneg)],1,mean,dim=1,na.rm=TRUE),digits=6),sum(!is.na(POSi)),sum(!is.na(NEGj)),cor(POSi, NEGj,use="na.or.complete"));
                                                                                      mh=rbind(mh,unlist(newrow));
                                                                                      j=j+1;
                                                                                    }else j=j+1;
